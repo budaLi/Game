@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="/static/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/dice.css">
+    <title>筛子游戏</title>
+    <script>
+        let link = document.createElement('link');
+        link.rel = "stylesheet";
+        link.type = "text/css";
+        link.href = `/static/css/diceGame.css?t=${new Date().getTime()}`; //防止缓存
+        document.head.appendChild(link);
+    </script>
+    <script src="/static/js/vender/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="diceGameContent">
+        <div class="outerWrap">
+            <div class="diceGameTopArea">
+                <div class="diceLight"></div>
+{#                <div class="diceLogo"></div>#}
+                <div class="diceIssue">
+                    <div class="diceIssueTop">20170802-0501期</div>
+                    <div class="diceIssueCountDown">
+                         <div id="a" class="diceIssueCountDownNum diceIssueCountDown0"></div>
+                        <div id="b" class="diceIssueCountDownNum diceIssueCountDown0"></div>
+                        <div id="c" class="diceIssueCountDownNum diceIssueCountDown0"></div>
+                        <div id="d" class="diceIssueCountDownNum diceIssueCountDown0"></div>
+                    </div>
+                </div>
+                <div class="diceResult">
+                    <div class="diceResultTop">上期中奖骰子</div>
+                    <div class="diceResultDetail">
+{#                        <div class="diceResultDetailFirst diceResult_1"></div>#}
+                        <div id="diceResultDetailFirst" class="diceResultDetailFirst diceResult_0"></div>
+                        <div id="diceResultDetailSecond" class="diceResultDetailSecond diceResult_0"></div>
+                        <div id="diceResultDetailThird" class="diceResultDetailThird diceResult_0"></div>
+                    </div>
+                </div>
+                <div class="diceRecent">
+                    <div class="diceRecentTop">最近30期开奖结果</div>
+                    <div class="diceRecentDetail">
+                        <div class="scrollWrap">
+                            <ul>
+                                <li class="clearfix">
+                                    <div class="diceRD_left">0412</div>
+                                    <div class="diceRD_center">
+                                        <div class="diceRD"></div>
+                                        <div class="diceRD"></div>
+                                        <div class="diceRD"></div>
+                                    </div>
+                                    <div class="diceRD_right">
+                                        <div class="diceRD_xt_r">大</div>
+                                        <div class="diceRD_xt_m">单</div>
+                                        <div class="diceRD_xt_l">9</div>
+                                    </div>
+                                </li>
+{#                                <li class="clearfix">#}
+{#                                    <div class="diceRD_left">0412</div>#}
+{#                                    <div class="diceRD_center">#}
+{#                                        <div class="diceRD diceRD_1"></div>#}
+{#                                        <div class="diceRD diceRD_2"></div>#}
+{#                                        <div class="diceRD diceRD_3"></div>#}
+{#                                    </div>#}
+{#                                    <div class="diceRD_right">#}
+{#                                        <div class="diceRD_xt_r">大</div>#}
+{#                                        <div class="diceRD_xt_m">单</div>#}
+{#                                        <div class="diceRD_xt_l">9</div>#}
+{#                                    </div>#}
+{#                                </li>#}
+{#                                <li class="clearfix">#}
+{#                                    <div class="diceRD_left">0412</div>#}
+{#                                    <div class="diceRD_center">#}
+{#                                        <div class="diceRD diceRD_1"></div>#}
+{#                                        <div class="diceRD diceRD_2"></div>#}
+{#                                        <div class="diceRD diceRD_3"></div>#}
+{#                                    </div>#}
+{#                                    <div class="diceRD_right">#}
+{#                                        <div class="diceRD_xt_r">大</div>#}
+{#                                        <div class="diceRD_xt_m">单</div>#}
+{#                                        <div class="diceRD_xt_l">9</div>#}
+{#                                    </div>#}
+{#                                </li>#}
+{#                                <li class="clearfix">#}
+{#                                    <div class="diceRD_left">0412</div>#}
+{#                                    <div class="diceRD_center">#}
+{#                                        <div class="diceRD diceRD_1"></div>#}
+{#                                        <div class="diceRD diceRD_2"></div>#}
+{#                                        <div class="diceRD diceRD_3"></div>#}
+{#                                    </div>#}
+{#                                    <div class="diceRD_right">#}
+{#                                        <div class="diceRD_xt_r">大</div>#}
+{#                                        <div class="diceRD_xt_m">单</div>#}
+{#                                        <div class="diceRD_xt_l">9</div>#}
+{#                                    </div>#}
+{#                                </li>#}
+{#                                <li class="clearfix">#}
+{#                                    <div class="diceRD_left">0412</div>#}
+{#                                    <div class="diceRD_center">#}
+{#                                        <div class="diceRD diceRD_1"></div>#}
+{#                                        <div class="diceRD diceRD_2"></div>#}
+{#                                        <div class="diceRD diceRD_3"></div>#}
+{#                                    </div>#}
+{#                                    <div class="diceRD_right">#}
+{#                                        <div class="diceRD_xt_r">大</div>#}
+{#                                        <div class="diceRD_xt_m">单</div>#}
+{#                                        <div class="diceRD_xt_l">9</div>#}
+{#                                    </div>#}
+{#                                </li>#}
+{#                                <li class="clearfix">#}
+{#                                    <div class="diceRD_left">0412</div>#}
+{#                                    <div class="diceRD_center">#}
+{#                                        <div class="diceRD diceRD_1"></div>#}
+{#                                        <div class="diceRD diceRD_2"></div>#}
+{#                                        <div class="diceRD diceRD_3"></div>#}
+{#                                    </div>#}
+{#                                    <div class="diceRD_right">#}
+{#                                        <div class="diceRD_xt_r">大</div>#}
+{#                                        <div class="diceRD_xt_m">单</div>#}
+{#                                        <div class="diceRD_xt_l">9</div>#}
+{#                                    </div>#}
+{#                                </li>#}
+{#                                <li class="clearfix">#}
+{#                                    <div class="diceRD_left">0412</div>#}
+{#                                    <div class="diceRD_center">#}
+{#                                        <div class="diceRD diceRD_1"></div>#}
+{#                                        <div class="diceRD diceRD_2"></div>#}
+{#                                        <div class="diceRD diceRD_3"></div>#}
+{#                                    </div>#}
+{#                                    <div class="diceRD_right">#}
+{#                                        <div class="diceRD_xt_r">大</div>#}
+{#                                        <div class="diceRD_xt_m">单</div>#}
+{#                                        <div class="diceRD_xt_l">9</div>#}
+{#                                    </div>#}
+{#                                </li>#}
+{#                                <li class="clearfix">#}
+{#                                    <div class="diceRD_left">0412</div>#}
+{#                                    <div class="diceRD_center">#}
+{#                                        <div class="diceRD diceRD_1"></div>#}
+{#                                        <div class="diceRD diceRD_2"></div>#}
+{#                                        <div class="diceRD diceRD_3"></div>#}
+{#                                    </div>#}
+{#                                    <div class="diceRD_right">#}
+{#                                        <div class="diceRD_xt_r">大</div>#}
+{#                                        <div class="diceRD_xt_m">单</div>#}
+{#                                        <div class="diceRD_xt_l">9</div>#}
+{#                                    </div>#}
+{#                                </li>#}
+{#                                <li class="clearfix">#}
+{#                                    <div class="diceRD_left">0412</div>#}
+{#                                    <div class="diceRD_center">#}
+{#                                        <div class="diceRD diceRD_1"></div>#}
+{#                                        <div class="diceRD diceRD_2"></div>#}
+{#                                        <div class="diceRD diceRD_3"></div>#}
+{#                                    </div>#}
+{#                                    <div class="diceRD_right">#}
+{#                                        <div class="diceRD_xt_r">大</div>#}
+{#                                        <div class="diceRD_xt_m">单</div>#}
+{#                                        <div class="diceRD_xt_l">9</div>#}
+{#                                    </div>#}
+{#                                </li>#}
+{#                                <li class="clearfix">#}
+{#                                    <div class="diceRD_left">0412</div>#}
+{#                                    <div class="diceRD_center">#}
+{#                                        <div class="diceRD diceRD_1"></div>#}
+{#                                        <div class="diceRD diceRD_2"></div>#}
+{#                                        <div class="diceRD diceRD_3"></div>#}
+{#                                    </div>#}
+{#                                    <div class="diceRD_right">#}
+{#                                        <div class="diceRD_xt_r">大</div>#}
+{#                                        <div class="diceRD_xt_m">单</div>#}
+{#                                        <div class="diceRD_xt_l">9</div>#}
+{#                                    </div>#}
+{#                                </li>#}
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="diceCup">
+                <div class="diceInCup1 diceInCup_left"></div>
+                <div class="diceInCup2 diceInCup_center"></div>
+                <div class="diceInCup4 diceInCup_right"></div>
+            </div>
+            <div class="wrap">
+                <div class="rowOne">
+                    <div class="dxds_left">
+                        <div class="dxds_da" value="大" rel="selectCode" method="dxds_dxds_dxds" odds="" point="">
+                            <div class="explain" title="开奖骰子三个号的和值为11~18即中奖">?</div>
+                            <div class="peilv">1:1</div>
+                            <div class="bigNumber">BIG 11~17</div>
+                            <div class="bigChinese">大</div>
+                        </div>
+                        <div class="dxds_dan" value="单" rel="selectCode" method="dxds_dxds_dxds" odds="" point="">
+                            <div class="explain" title="开奖骰子三个号的和值为单数即中奖">?</div>
+                            <div class="peilv">1:1</div>
+                            <div class="danChinese">单</div>
+                        </div>
+                    </div>
+                    <div class="th2_left">
+                        <div class="th2_left_top">
+                            <span class="explain" title="可以对一个或多个二同号进行投注，开奖骰子包含所选二同号即中奖">?</span>
+                            <span class="peilv">1:10</span>
+                        </div>
+                        <div class="th2_left_item" value="66" rel="selectCode" method="th2_th2fx_fx" odds="" point="">
+                            <div class="dice_rect">
+                                <div class="dot dice_six1"></div>
+                                <div class="dot dice_six2"></div>
+                                <div class="dot dice_six3"></div>
+                                <div class="dot dice_six4"></div>
+                                <div class="dot dice_six5"></div>
+                                <div class="dot dice_six6"></div>
+                            </div>
+                            <div class="dice_rect">
+                                <div class="dot dice_six1"></div>
+                                <div class="dot dice_six2"></div>
+                                <div class="dot dice_six3"></div>
+                                <div class="dot dice_six4"></div>
+                                <div class="dot dice_six5"></div>
+                                <div class="dot dice_six6"></div>
+                            </div>
+                        </div>
+                        <div class="th2_left_item" value="55" rel="selectCode" method="th2_th2fx_fx" odds="" point="">
+                            <div class="dice_rect">
+                                <div class="dot dice_five1"></div>
+                                <div class="dot dice_five2"></div>
+                                <div class="dot dice_five3"></div>
+                                <div class="dot dice_five4"></div>
+                                <div class="dot dice_five5"></div>
+                            </div>
+                            <div class="dice_rect">
+                                <div class="dot dice_five1"></div>
+                                <div class="dot dice_five2"></div>
+                                <div class="dot dice_five3"></div>
+                                <div class="dot dice_five4"></div>
+                                <div class="dot dice_five5"></div>
+                            </div>
+                        </div>
+                        <div class="th2_left_item" value="44" rel="selectCode" method="th2_th2fx_fx" odds="" point="">
+                            <div class="dice_rect">
+                                <div class="dot dice_four1"></div>
+                                <div class="dot dice_four2"></div>
+                                <div class="dot dice_four3"></div>
+                                <div class="dot dice_four4"></div>
+                            </div>
+                            <div class="dice_rect">
+                                <div class="dot dice_four1"></div>
+                                <div class="dot dice_four2"></div>
+                                <div class="dot dice_four3"></div>
+                                <div class="dot dice_four4"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="th3">
+                        <div class="th3_dx">
+                            <div class="th3_dx_top">
+                                <span class="explain" title="可以选择一个或多个豹子号进行投注，开奖骰子为所选豹子号即中奖">?</span>
+                                <span class="peilv">1:180</span>
+                            </div>
+                            <div class="th3_dx_item" value="666" rel="selectCode" method="th3_th3_th3dx" odds="" point="">
+                                <div class="smallDiceWrap">
+                                    <div class="dice_rect_small">
+                                        <div class="dot_small dice_six1"></div>
+                                        <div class="dot_small dice_six2"></div>
+                                        <div class="dot_small dice_six3"></div>
+                                        <div class="dot_small dice_six4"></div>
+                                        <div class="dot_small dice_six5"></div>
+                                        <div class="dot_small dice_six6"></div>
+                                    </div>
+                                </div>
+                                <div class="smallDiceWrap">
+                                    <div class="dice_rect_small">
+                                        <div class="dot_small dice_six1"></div>
+                                        <div class="dot_small dice_six2"></div>
+                                        <div class="dot_small dice_six3"></div>
+                                        <div class="dot_small dice_six4"></div>
+                                        <div class="dot_small dice_six5"></div>
+                                        <div class="dot_small dice_six6"></div>
+                                    </div>
+                                </div>
+                                <div class="smallDiceWrap">
+                                    <div class="dice_rect_small">
+                                        <div class="dot_small dice_six1"></div>
+                                        <div class="dot_small dice_six2"></div>
+                                        <div class="dot_small dice_six3"></div>
+                                        <div class="dot_small dice_six4"></div>
+                                        <div class="dot_small dice_six5"></div>
+                                        <div class="dot_small dice_six6"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="th3_dx_item" value="555" rel="selectCode" method="th3_th3_th3dx" odds="" point="">
+                                <div class="smallDiceWrap">
+                                    <div class="dice_rect_small">
+                                        <div class="dot_small dice_five1"></div>
+                                        <div class="dot_small dice_five2"></div>
+                                        <div class="dot_small dice_five3"></div>
+                                        <div class="dot_small dice_five4"></div>
+                                        <div class="dot_small dice_five5"></div>
+                                    </div>
+                                </div>
+                                <div class="smallDiceWrap">
+                                    <div class="dice_rect_small">
+                                        <div class="dot_small dice_five1"></div>
+                                        <div class="dot_small dice_five2"></div>
+                                        <div class="dot_small dice_five3"></div>
+                                        <div class="dot_small dice_five4"></div>
+                                        <div class="dot_small dice_five5"></div>
+                                    </div>
+                                </div>
+                                <div class="smallDiceWrap">
+                                    <div class="dice_rect_small">
+                                        <div class="dot_small dice_five1"></div>
+                                        <div class="dot_small dice_five2"></div>
+                                        <div class="dot_small dice_five3"></div>
+                                        <div class="dot_small dice_five4"></div>
+                                        <div class="dot_small dice_five5"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="th3_dx_item" value="444" rel="selectCode" method="th3_th3_th3dx" odds="" point="">
+                                <div class="smallDiceWrap">
+                                    <div class="dice_rect_small">
+                                        <div class="dot_small dice_four1"></div>
+                                        <div class="dot_small dice_four2"></div>
+                                        <div class="dot_small dice_four3"></div>
+                                        <div class="dot_small dice_four4"></div>
+                                    </div>
+                                </div>
+                                <div class="smallDiceWrap">
+                                    <div class="dice_rect_small">
+                                        <div class="dot_small dice_four1"></div>
+                                        <div class="dot_small dice_four2"></div>
+                                        <div class="dot_small dice_four3"></div>
+                                        <div class="dot_small dice_four4"></div>
+                                    </div>
+                                </div>
+                                <div class="smallDiceWrap">
+                                    <div class="dice_rect_small">
+                                        <div class="dot_small dice_four1"></div>
+                                        <div class="dot_small dice_four2"></div>
+                                        <div class="dot_small dice_four3"></div>
+                                        <div class="dot_small dice_four4"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="th3_dx_item" value="333" rel="selectCode" method="th3_th3_th3dx" odds="" point="">
+                                <div class="smallDiceWrap">
+                                    <div class="dice_rect_small">
+                                        <div class="dot_small dice_three1"></div>
+                                        <div class="dot_small dice_three2"></div>
+                                        <div class="dot_small dice_three3"></div>
+                                    </div>
+                                </div>
+                                <div class="smallDiceWrap">
+                                    <div class="dice_rect_small">
+                                        <div class="dot_small dice_three1"></div>
+                                        <div class="dot_small dice_three2"></div>
+                                        <div class="dot_small dice_three3"></div>
+                                    </div>
+                                </div>
+                                <div class="smallDiceWrap">
+                                    <div class="dice_rect_small">
+                                        <div class="dot_small dice_three1"></div>
+                                        <div class="dot_small dice_three2"></div>
+                                        <div class="dot_small dice_three3"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="th3_dx_item" value="222" rel="selectCode" method="th3_th3_th3dx" odds="" point="">
+                                <div class="smallDiceWrap">
+                                    <div class="dice_rect_small">
+                                        <div class="dot_small dice_two1"></div>
+                                        <div class="dot_small dice_two2"></div>
+                                    </div>
+                                </div>
+                                <div class="smallDiceWrap">
+                                    <div class="dice_rect_small">
+                                        <div class="dot_small dice_two1"></div>
+                                        <div class="dot_small dice_two2"></div>
+                                    </div>
+                                </div>
+                                <div class="smallDiceWrap">
+                                    <div class="dice_rect_small">
+                                        <div class="dot_small dice_two1"></div>
+                                        <div class="dot_small dice_two2"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="th3_dx_item" value="111" rel="selectCode" method="th3_th3_th3dx" odds="" point="">
+                                <div class="smallDiceWrap">
+                                    <div class="dice_rect_small">
+                                        <div class="dot_small dice_one"></div>
+                                    </div>
+                                </div>
+                                <div class="smallDiceWrap">
+                                    <div class="dice_rect_small">
+                                        <div class="dot_small dice_one"></div>
+                                    </div>
+                                </div>
+                                <div class="smallDiceWrap">
+                                    <div class="dice_rect_small">
+                                        <div class="dot_small dice_one"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="th3_tx" value="666|555|444|333|222|111" rel="selectCode" method="th3_th3_th3tx" odds="" point="">
+                            <div class="th3_tx_top">
+                                <span class="explain" title="对所有豹子进行投注，开奖骰子为豹子即中奖">?</span>
+                                <span class="peilv">1:30</span>
+                            </div>
+                            <div class="th3_tx_item">
+                                <div class="smallDiceWrap">
+                                    <div class="dice_rect_small">
+                                        <div class="dot_small dice_six1"></div>
+                                        <div class="dot_small dice_six2"></div>
+                                        <div class="dot_small dice_six3"></div>
+                                        <div class="dot_small dice_six4"></div>
+                                        <div class="dot_small dice_six5"></div>
+                                        <div class="dot_small dice_six6"></div>
+                                    </div>
+                                </div>
+                                <div class="smallDiceWrap">
+                                    <div class="dice_rect_small">
+                                        <div class="dot_small dice_six1"></div>
+                                        <div class="dot_small dice_six2"></div>
+                                        <div class="dot_small dice_six3"></div>
+                                        <div class="dot_small dice_six4"></div>
+                                        <div class="dot_small dice_six5"></div>
+                                        <div class="dot_small dice_six6"></div>
+                                    </div>
+                                </div>
+                                <div class="smallDiceWrap">
+                                    <div class="dice_rect_small">
+                                        <div class="dot_small dice_six1"></div>
+                                        <div class="dot_small dice_six2"></div>
+                                        <div class="dot_small dice_six3"></div>
+                                        <div class="dot_small dice_six4"></div>
+                                        <div class="dot_small dice_six5"></div>
+                                        <div class="dot_small dice_six6"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="th3_tx_item">
+                                <div class="smallDiceWrap">
+                                    <div class="dice_rect_small">
+                                        <div class="dot_small dice_five1"></div>
+                                        <div class="dot_small dice_five2"></div>
+                                        <div class="dot_small dice_five3"></div>
+                                        <div class="dot_small dice_five4"></div>
+                                        <div class="dot_small dice_five5"></div>
+                                    </div>
+                                </div>
+                                <div class="smallDiceWrap">
+                                    <div class="dice_rect_small">
+                                        <div class="dot_small dice_five1"></div>
+                                        <div class="dot_small dice_five2"></div>
+                                        <div class="dot_small dice_five3"></div>
+                                        <div class="dot_small dice_five4"></div>
+                                        <div class="dot_small dice_five5"></div>
+                                    </div>
+                                </div>
+                                <div class="smallDiceWrap">
+                                    <div class="dice_rect_small">
+                                        <div class="dot_small dice_five1"></div>
+                                        <div class="dot_small dice_five2"></div>
+                                        <div class="dot_small dice_five3"></div>
+                                        <div class="dot_small dice_five4"></div>
+                                        <div class="dot_small dice_five5"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="th3_tx_item">
+                                <div class="smallDiceWrap">
+                                    <div class="dice_rect_small">
+                                        <div class="dot_small dice_four1"></div>
+                                        <div class="dot_small dice_four2"></div>
+                                        <div class="dot_small dice_four3"></div>
+                                        <div class="dot_small dice_four4"></div>
+                                    </div>
+                                </div>
+                                <div class="smallDiceWrap">
+                                    <div class="dice_rect_small">
+                                        <div class="dot_small dice_four1"></div>
+                                        <div class="dot_small dice_four2"></div>
+                                        <div class="dot_small dice_four3"></div>
+                                        <div class="dot_small dice_four4"></div>
+                                    </div>
+                                </div>
+                                <div class="smallDiceWrap">
+                                    <div class="dice_rect_small">
+                                        <div class="dot_small dice_four1"></div>
+                                        <div class="dot_small dice_four2"></div>
+                                        <div class="dot_small dice_four3"></div>
+                                        <div class="dot_small dice_four4"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="th3_tx_item">
+                                <div class="smallDiceWrap">
+                                    <div class="dice_rect_small">
+                                        <div class="dot_small dice_three1"></div>
+                                        <div class="dot_small dice_three2"></div>
+                                        <div class="dot_small dice_three3"></div>
+                                    </div>
+                                </div>
+                                <div class="smallDiceWrap">
+                                    <div class="dice_rect_small">
+                                        <div class="dot_small dice_three1"></div>
+                                        <div class="dot_small dice_three2"></div>
+                                        <div class="dot_small dice_three3"></div>
+                                    </div>
+                                </div>
+                                <div class="smallDiceWrap">
+                                    <div class="dice_rect_small">
+                                        <div class="dot_small dice_three1"></div>
+                                        <div class="dot_small dice_three2"></div>
+                                        <div class="dot_small dice_three3"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="th3_tx_item">
+                                <div class="smallDiceWrap">
+                                    <div class="dice_rect_small">
+                                        <div class="dot_small dice_two1"></div>
+                                        <div class="dot_small dice_two2"></div>
+                                    </div>
+                                </div>
+                                <div class="smallDiceWrap">
+                                    <div class="dice_rect_small">
+                                        <div class="dot_small dice_two1"></div>
+                                        <div class="dot_small dice_two2"></div>
+                                    </div>
+                                </div>
+                                <div class="smallDiceWrap">
+                                    <div class="dice_rect_small">
+                                        <div class="dot_small dice_two1"></div>
+                                        <div class="dot_small dice_two2"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="th3_tx_item">
+                                <div class="smallDiceWrap">
+                                    <div class="dice_rect_small">
+                                        <div class="dot_small dice_one"></div>
+                                    </div>
+                                </div>
+                                <div class="smallDiceWrap">
+                                    <div class="dice_rect_small">
+                                        <div class="dot_small dice_one"></div>
+                                    </div>
+                                </div>
+                                <div class="smallDiceWrap">
+                                    <div class="dice_rect_small">
+                                        <div class="dot_small dice_one"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="th2_right">
+                        <div class="th2_right_top">
+                            <span class="explain" title="可以对一个或多个二同号进行投注，开奖骰子包含所选二同号即中奖">?</span>
+                            <span class="peilv">1:10</span>
+                        </div>
+                        <div class="th2_right_item" value="33" rel="selectCode" method="th2_th2fx_fx" odds="" point="">
+                            <div class="dice_rect">
+                                <div class="dot dice_three1"></div>
+                                <div class="dot dice_three2"></div>
+                                <div class="dot dice_three3"></div>
+                            </div>
+                            <div class="dice_rect">
+                                <div class="dot dice_three1"></div>
+                                <div class="dot dice_three2"></div>
+                                <div class="dot dice_three3"></div>
+                            </div>
+                        </div>
+                        <div class="th2_right_item" value="22" rel="selectCode" method="th2_th2fx_fx" odds="" point="">
+                            <div class="dice_rect">
+                                <div class="dot dice_two1"></div>
+                                <div class="dot dice_two2"></div>
+                            </div>
+                            <div class="dice_rect">
+                                <div class="dot dice_two1"></div>
+                                <div class="dot dice_two2"></div>
+                            </div>
+                        </div>
+                        <div class="th2_right_item" value="11" rel="selectCode" method="th2_th2fx_fx" odds="" point="">
+                            <div class="dice_rect">
+                                <div class="dot dice_one"></div>
+                                <div class="dot dice_one"></div>
+                            </div>
+                            <div class="dice_rect">
+                                <div class="dot dice_one"></div>
+                                <div class="dot dice_one"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dxds_right">
+                        <div class="dxds_xiao" value="小" rel="selectCode" method="dxds_dxds_dxds" odds="" point="">
+                            <div class="explain" title="开奖骰子三个号的和值为3~10即中奖">?</div>
+                            <div class="peilv">1:1</div>
+                            <div class="smallNumber">SMALL 4~10</div>
+                            <div class="smallChinese">小</div>
+                        </div>
+                        <div class="dxds_shuang" value="双" rel="selectCode" method="dxds_dxds_dxds" odds="" point="">
+                            <div class="explain" title="开奖骰子三个号的和值为双数即中奖">?</div>
+                            <div class="peilv">1:1</div>
+                            <div class="shuangChinese">双</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rowTwo hz">
+                    <div class="hz_item" value="hz17" rel="selectCode" method="hz_hz_hz" odds="" point="">
+                        <div class="explain" title="可以选择一个或多个和值进行投注，所选和值与开奖骰子三个号的和值相同即中奖">?</div>
+                        <div class="num">17</div>
+                        <div class="peilv">1:60</div>
+                    </div>
+                    <div class="hz_item" value="hz16" rel="selectCode" method="hz_hz_hz" odds="" point="">
+                        <div class="num">16</div>
+                        <div class="peilv">1:60</div>
+                    </div>
+                    <div class="hz_item" value="hz15" rel="selectCode" method="hz_hz_hz" odds="" point="">
+                        <div class="num">15</div>
+                        <div class="peilv">1:60</div>
+                    </div>
+                    <div class="hz_item" value="hz14" rel="selectCode" method="hz_hz_hz" odds="" point="">
+                        <div class="num">14</div>
+                        <div class="peilv">1:60</div>
+                    </div>
+                    <div class="hz_item" value="hz13" rel="selectCode" method="hz_hz_hz" odds="" point="">
+                        <div class="num">13</div>
+                        <div class="peilv">1:60</div>
+                    </div>
+                    <div class="hz_item" value="hz12" rel="selectCode" method="hz_hz_hz" odds="" point="">
+                        <div class="num">12</div>
+                        <div class="peilv">1:60</div>
+                    </div>
+                    <div class="hz_item" value="hz11" rel="selectCode" method="hz_hz_hz" odds="" point="">
+                        <div class="num">11</div>
+                        <div class="peilv">1:60</div>
+                    </div>
+                    <div class="hz_item" value="hz10" rel="selectCode" method="hz_hz_hz" odds="" point="">
+                        <div class="num">10</div>
+                        <div class="peilv">1:60</div>
+                    </div>
+                    <div class="hz_item" value="hz09" rel="selectCode" method="hz_hz_hz" odds="" point="">
+                        <div class="num">09</div>
+                        <div class="peilv">1:60</div>
+                    </div>
+                    <div class="hz_item" value="hz08" rel="selectCode" method="hz_hz_hz" odds="" point="">
+                        <div class="num">08</div>
+                        <div class="peilv">1:60</div>
+                    </div>
+                    <div class="hz_item" value="hz07" rel="selectCode" method="hz_hz_hz" odds="" point="">
+                        <div class="num">07</div>
+                        <div class="peilv">1:60</div>
+                    </div>
+                    <div class="hz_item" value="hz06" rel="selectCode" method="hz_hz_hz" odds="" point="">
+                        <div class="num">06</div>
+                        <div class="peilv">1:60</div>
+                    </div>
+                    <div class="hz_item" value="hz05" rel="selectCode" method="hz_hz_hz" odds="" point="">
+                        <div class="num">05</div>
+                        <div class="peilv">1:60</div>
+                    </div>
+                    <div class="hz_item" value="hz04" rel="selectCode" method="hz_hz_hz" odds="" point="">
+                        <div class="num">04</div>
+                        <div class="peilv">1:60</div>
+                    </div>
+                </div>
+                <div class="rowThree bth2">
+                    <div class="bth2_peilv">
+                        <span class="explain" title="可以对一个或多个二不同号进行投注，开奖骰子包含所选二不同号即中奖">?</span>
+                        <span class="peilv">1:5</span>
+                    </div>
+                    <div class="bth2_item" value="56" rel="selectCode" method="bth2_bth2_ds" odds="" point="">
+                        <div class="dice_rect">
+                            <div class="dot dice_five1"></div>
+                            <div class="dot dice_five2"></div>
+                            <div class="dot dice_five3"></div>
+                            <div class="dot dice_five4"></div>
+                            <div class="dot dice_five5"></div>
+                        </div>
+                        <div class="dice_rect">
+                            <div class="dot dice_six1"></div>
+                            <div class="dot dice_six2"></div>
+                            <div class="dot dice_six3"></div>
+                            <div class="dot dice_six4"></div>
+                            <div class="dot dice_six5"></div>
+                            <div class="dot dice_six6"></div>
+                        </div>
+                    </div>
+                    <div class="bth2_item" value="46" rel="selectCode" method="bth2_bth2_ds" odds="" point="">
+                        <div class="dice_rect">
+                            <div class="dot dice_four1"></div>
+                            <div class="dot dice_four2"></div>
+                            <div class="dot dice_four3"></div>
+                            <div class="dot dice_four4"></div>
+                        </div>
+                        <div class="dice_rect">
+                            <div class="dot dice_six1"></div>
+                            <div class="dot dice_six2"></div>
+                            <div class="dot dice_six3"></div>
+                            <div class="dot dice_six4"></div>
+                            <div class="dot dice_six5"></div>
+                            <div class="dot dice_six6"></div>
+                        </div>
+                    </div>
+                    <div class="bth2_item" value="45" rel="selectCode" method="bth2_bth2_ds" odds="" point="">
+                        <div class="dice_rect">
+                            <div class="dot dice_four1"></div>
+                            <div class="dot dice_four2"></div>
+                            <div class="dot dice_four3"></div>
+                            <div class="dot dice_four4"></div>
+                        </div>
+                        <div class="dice_rect">
+                            <div class="dot dice_five1"></div>
+                            <div class="dot dice_five2"></div>
+                            <div class="dot dice_five3"></div>
+                            <div class="dot dice_five4"></div>
+                            <div class="dot dice_five5"></div>
+                        </div>
+                    </div>
+                    <div class="bth2_item" value="36" rel="selectCode" method="bth2_bth2_ds" odds="" point="">
+                        <div class="dice_rect">
+                            <div class="dot dice_three1"></div>
+                            <div class="dot dice_three2"></div>
+                            <div class="dot dice_three3"></div>
+                        </div>
+                        <div class="dice_rect">
+                            <div class="dot dice_six1"></div>
+                            <div class="dot dice_six2"></div>
+                            <div class="dot dice_six3"></div>
+                            <div class="dot dice_six4"></div>
+                            <div class="dot dice_six5"></div>
+                            <div class="dot dice_six6"></div>
+                        </div>
+                    </div>
+                    <div class="bth2_item" value="35" rel="selectCode" method="bth2_bth2_ds" odds="" point="">
+                        <div class="dice_rect">
+                            <div class="dot dice_three1"></div>
+                            <div class="dot dice_three2"></div>
+                            <div class="dot dice_three3"></div>
+                        </div>
+                        <div class="dice_rect">
+                            <div class="dot dice_five1"></div>
+                            <div class="dot dice_five2"></div>
+                            <div class="dot dice_five3"></div>
+                            <div class="dot dice_five4"></div>
+                            <div class="dot dice_five5"></div>
+                        </div>
+                    </div>
+                    <div class="bth2_item" value="34" rel="selectCode" method="bth2_bth2_ds" odds="" point="">
+                        <div class="dice_rect">
+                            <div class="dot dice_three1"></div>
+                            <div class="dot dice_three2"></div>
+                            <div class="dot dice_three3"></div>
+                        </div>
+                        <div class="dice_rect">
+                            <div class="dot dice_four1"></div>
+                            <div class="dot dice_four2"></div>
+                            <div class="dot dice_four3"></div>
+                            <div class="dot dice_four4"></div>
+                        </div>
+                    </div>
+                    <div class="bth2_item" value="26" rel="selectCode" method="bth2_bth2_ds" odds="" point="">
+                        <div class="dice_rect">
+                            <div class="dot dice_two1"></div>
+                            <div class="dot dice_two2"></div>
+                        </div>
+                        <div class="dice_rect">
+                            <div class="dot dice_six1"></div>
+                            <div class="dot dice_six2"></div>
+                            <div class="dot dice_six3"></div>
+                            <div class="dot dice_six4"></div>
+                            <div class="dot dice_six5"></div>
+                            <div class="dot dice_six6"></div>
+                        </div>
+                    </div>
+                    <div class="bth2_item" value="25" rel="selectCode" method="bth2_bth2_ds" odds="" point="">
+                        <div class="dice_rect">
+                            <div class="dot dice_two1"></div>
+                            <div class="dot dice_two2"></div>
+                        </div>
+                        <div class="dice_rect">
+                            <div class="dot dice_five1"></div>
+                            <div class="dot dice_five2"></div>
+                            <div class="dot dice_five3"></div>
+                            <div class="dot dice_five4"></div>
+                            <div class="dot dice_five5"></div>
+                        </div>
+                    </div>
+                    <div class="bth2_item" value="24" rel="selectCode" method="bth2_bth2_ds" odds="" point="">
+                        <div class="dice_rect">
+                            <div class="dot dice_two1"></div>
+                            <div class="dot dice_two2"></div>
+                        </div>
+                        <div class="dice_rect">
+                            <div class="dot dice_four1"></div>
+                            <div class="dot dice_four2"></div>
+                            <div class="dot dice_four3"></div>
+                            <div class="dot dice_four4"></div>
+                        </div>
+                    </div>
+                    <div class="bth2_item" value="23" rel="selectCode" method="bth2_bth2_ds" odds="" point="">
+                        <div class="dice_rect">
+                            <div class="dot dice_two1"></div>
+                            <div class="dot dice_two2"></div>
+                        </div>
+                        <div class="dice_rect">
+                            <div class="dot dice_three1"></div>
+                            <div class="dot dice_three2"></div>
+                            <div class="dot dice_three3"></div>
+                        </div>
+                    </div>
+                    <div class="bth2_item" value="16" rel="selectCode" method="bth2_bth2_ds" odds="" point="">
+                        <div class="dice_rect">
+                            <div class="dot dice_one"></div>
+                        </div>
+                        <div class="dice_rect">
+                            <div class="dot dice_six1"></div>
+                            <div class="dot dice_six2"></div>
+                            <div class="dot dice_six3"></div>
+                            <div class="dot dice_six4"></div>
+                            <div class="dot dice_six5"></div>
+                            <div class="dot dice_six6"></div>
+                        </div>
+                    </div>
+                    <div class="bth2_item" value="15" rel="selectCode" method="bth2_bth2_ds" odds="" point="">
+                        <div class="dice_rect">
+                            <div class="dot dice_one"></div>
+                        </div>
+                        <div class="dice_rect">
+                            <div class="dot dice_five1"></div>
+                            <div class="dot dice_five2"></div>
+                            <div class="dot dice_five3"></div>
+                            <div class="dot dice_five4"></div>
+                            <div class="dot dice_five5"></div>
+                        </div>
+                    </div>
+                    <div class="bth2_item" value="14" rel="selectCode" method="bth2_bth2_ds" odds="" point="">
+                        <div class="dice_rect">
+                            <div class="dot dice_one"></div>
+                        </div>
+                        <div class="dice_rect">
+                            <div class="dot dice_four1"></div>
+                            <div class="dot dice_four2"></div>
+                            <div class="dot dice_four3"></div>
+                            <div class="dot dice_four4"></div>
+                        </div>
+                    </div>
+                    <div class="bth2_item" value="13" rel="selectCode" method="bth2_bth2_ds" odds="" point="">
+                        <div class="dice_rect">
+                            <div class="dot dice_one"></div>
+                        </div>
+                        <div class="dice_rect">
+                            <div class="dot dice_three1"></div>
+                            <div class="dot dice_three2"></div>
+                            <div class="dot dice_three3"></div>
+                        </div>
+                    </div>
+                    <div class="bth2_item" value="12" rel="selectCode" method="bth2_bth2_ds" odds="" point="">
+                        <div class="dice_rect">
+                            <div class="dot dice_one"></div>
+                        </div>
+                        <div class="dice_rect">
+                            <div class="dot dice_two1"></div>
+                            <div class="dot dice_two2"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="rowFour">
+                    <div class="cygh">
+                        <div class="cygh_peilv">
+                            <span class="explain" title="从六个号码中选择一个或多个号码进行投注，若开奖骰子包含所选号码即中奖">?</span>
+                            <span class="peilv">1:5</span>
+                        </div>
+                        <!-- value前面加个a和和值玩法value区分 -->
+                        <div class="cygh_item" value="1" rel="selectCode" method="cygh_cygh_cygh" odds="" point="">
+                            <div class="dice_rect_big">
+                                <div class="dot_big dice_one"></div>
+                            </div>
+                        </div>
+                        <div class="cygh_item" value="2" rel="selectCode" method="cygh_cygh_cygh" odds="" point="">
+                            <div class="dice_rect_big">
+                                <div class="dot_big dice_two1"></div>
+                                <div class="dot_big dice_two2"></div>
+                            </div>
+                        </div>
+                        <div class="cygh_item" value="3" rel="selectCode" method="cygh_cygh_cygh" odds="" point="">
+                            <div class="dice_rect_big">
+                                <div class="dot_big dice_three1"></div>
+                                <div class="dot_big dice_three2"></div>
+                                <div class="dot_big dice_three3"></div>
+                            </div>
+                        </div>
+                        <div class="cygh_item" value="4" rel="selectCode" method="cygh_cygh_cygh" odds="" point="">
+                            <div class="dice_rect_big">
+                                <div class="dot_big dice_four1"></div>
+                                <div class="dot_big dice_four2"></div>
+                                <div class="dot_big dice_four3"></div>
+                                <div class="dot_big dice_four4"></div>
+                            </div>
+                        </div>
+                        <div class="cygh_item" value="5" rel="selectCode" method="cygh_cygh_cygh" odds="" point="">
+                            <div class="dice_rect_big">
+                                <div class="dot_big dice_five1"></div>
+                                <div class="dot_big dice_five2"></div>
+                                <div class="dot_big dice_five3"></div>
+                                <div class="dot_big dice_five4"></div>
+                                <div class="dot_big dice_five5"></div>
+                            </div>
+                        </div>
+                        <div class="cygh_item" value="6" rel="selectCode" method="cygh_cygh_cygh" odds="" point="">
+                            <div class="dice_rect_big">
+                                <div class="dot_big dice_six1"></div>
+                                <div class="dot_big dice_six2"></div>
+                                <div class="dot_big dice_six3"></div>
+                                <div class="dot_big dice_six4"></div>
+                                <div class="dot_big dice_six5"></div>
+                                <div class="dot_big dice_six6"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lh3">
+                        <div class="lh3_peilv">
+                            <span class="explain" title="从三连号中选择一组或多组进行投注，若开奖骰子包含所选三连号即中奖">?</span>
+                            <span class="peilv">1:5</span>
+                        </div>
+                        <div class="lh3_item" value="123" rel="selectCode" method="bth3_lh3_dx" odds="" point="">
+                            <div class="small2DiceWrap">
+                                <div class="dice_rect_small2">
+                                    <div class="dot_small2 dice_one"></div>
+                                </div>
+                            </div>
+                            <div class="small2DiceWrap">
+                                <div class="dice_rect_small2">
+                                    <div class="dot_small2 dice_two1"></div>
+                                    <div class="dot_small2 dice_two2"></div>
+                                </div>
+                            </div>
+                            <div class="small2DiceWrap">
+                                <div class="dice_rect_small2">
+                                    <div class="dot_small2 dice_three1"></div>
+                                    <div class="dot_small2 dice_three2"></div>
+                                    <div class="dot_small2 dice_three3"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lh3_item" value="234" rel="selectCode" method="bth3_lh3_dx" odds="" point="">
+                            <div class="small2DiceWrap">
+                                <div class="dice_rect_small2">
+                                    <div class="dot_small2 dice_two1"></div>
+                                    <div class="dot_small2 dice_two2"></div>
+                                </div>
+                            </div>
+                            <div class="small2DiceWrap">
+                                <div class="dice_rect_small2">
+                                    <div class="dot_small2 dice_three1"></div>
+                                    <div class="dot_small2 dice_three2"></div>
+                                    <div class="dot_small2 dice_three3"></div>
+                                </div>
+                            </div>
+                            <div class="small2DiceWrap">
+                                <div class="dice_rect_small2">
+                                    <div class="dot_small2 dice_four1"></div>
+                                    <div class="dot_small2 dice_four2"></div>
+                                    <div class="dot_small2 dice_four3"></div>
+                                    <div class="dot_small2 dice_four4"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lh3_item" value="345" rel="selectCode" method="bth3_lh3_dx" odds="" point="">
+                            <div class="small2DiceWrap">
+                                <div class="dice_rect_small2">
+                                    <div class="dot_small2 dice_three1"></div>
+                                    <div class="dot_small2 dice_three2"></div>
+                                    <div class="dot_small2 dice_three3"></div>
+                                </div>
+                            </div>
+                            <div class="small2DiceWrap">
+                                <div class="dice_rect_small2">
+                                    <div class="dot_small2 dice_four1"></div>
+                                    <div class="dot_small2 dice_four2"></div>
+                                    <div class="dot_small2 dice_four3"></div>
+                                    <div class="dot_small2 dice_four4"></div>
+                                </div>
+                            </div>
+                            <div class="small2DiceWrap">
+                                <div class="dice_rect_small2">
+                                    <div class="dot_small2 dice_five1"></div>
+                                    <div class="dot_small2 dice_five2"></div>
+                                    <div class="dot_small2 dice_five3"></div>
+                                    <div class="dot_small2 dice_five4"></div>
+                                    <div class="dot_small2 dice_five5"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="lh3_item" value="456" rel="selectCode" method="bth3_lh3_dx" odds="" point="">
+                            <div class="small2DiceWrap">
+                                <div class="dice_rect_small2">
+                                    <div class="dot_small2 dice_four1"></div>
+                                    <div class="dot_small2 dice_four2"></div>
+                                    <div class="dot_small2 dice_four3"></div>
+                                    <div class="dot_small2 dice_four4"></div>
+                                </div>
+                            </div>
+                            <div class="small2DiceWrap">
+                                <div class="dice_rect_small2">
+                                    <div class="dot_small2 dice_five1"></div>
+                                    <div class="dot_small2 dice_five2"></div>
+                                    <div class="dot_small2 dice_five3"></div>
+                                    <div class="dot_small2 dice_five4"></div>
+                                    <div class="dot_small2 dice_five5"></div>
+                                </div>
+                            </div>
+                            <div class="small2DiceWrap">
+                                <div class="dice_rect_small2">
+                                    <div class="dot_small2 dice_six1"></div>
+                                    <div class="dot_small2 dice_six2"></div>
+                                    <div class="dot_small2 dice_six3"></div>
+                                    <div class="dot_small2 dice_six4"></div>
+                                    <div class="dot_small2 dice_six5"></div>
+                                    <div class="dot_small2 dice_six6"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="chips clearfix">
+                <div class="chip chip1" value="1"></div>
+                <div class="chip chip5" value="5"></div>
+                <div class="chip chip10" value="10"></div>
+                <div class="chip chip20" value="20"></div>
+                <div class="chip chip50" value="50"></div>
+                <div class="chip chip100" value="100"></div>
+                <div class="chip chip1000" value="1000"></div>
+                <div class="chip chip5000" value="5000"></div>
+            </div>
+        </div>
+        <div class="diceGameBar">
+            <div class="diceGameInfo">
+                <div class="balance">
+                    <div class="balanceLogo"></div>
+                    <div class="balanceDetail">
+                        <span class="balanceLabel">账户余额：</span>
+                        <span class="balanceAmount">0元</span>
+                    </div>
+                </div>
+                <div class="betMoney">
+                    <div class="betMoneyLogo"></div>
+                    <div class="betMoneyDetail">
+                        <span class="betMoneyLabel">下注金额：</span>
+                        <span class="betMoneyAmount">0元</span>
+                    </div>
+                </div>
+                <div class="userName">
+                    <div class="nameLogo"></div>
+                    <div class="name">****war</div>
+                </div>
+            </div>
+            <div class="betBar clearfix">
+                <div class="button cancelButton">撤销投注</div>
+                <div class="button betButton">确认投注</div>
+                <div class="button pieceButtoon">翻倍投注</div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/static/js/diceGame.js"></script>
+<script>
+    //筛子摇晃
+    function  YaoHuang() {
+            tem="diceResult_";
+            let random=Math.random()*9;
+            let First = document.getElementById("diceResultDetailFirst").classList;
+            let Second = document.getElementById("diceResultDetailSecond").classList;
+            let Third = document.getElementById("diceResultDetailThird").classList;
+            First.add(tem+Math.random()*9);
+            Second.add(tem+Math.random()*9);
+            Third.add(tem+Math.random()*9);
+
+    }
+     //生成开奖结果
+    function crateResult(){
+        tem="diceResult_";
+        let First = document.getElementById("diceResultDetailFirst").classList;
+        let Second = document.getElementById("diceResultDetailSecond").classList;
+        let Third = document.getElementById("diceResultDetailThird").classList;
+        First.remove(tem+0);
+        First.add(tem+2);
+        Second.remove(tem+0);
+        Second.add(tem+2);
+        Third.remove(tem+0);
+        Third.add(tem+1);
+        // $("#diceResultDetailFirst").classList.add(tem+2);
+        // $("#diceResultDetailSecond").classList.add(tem+3);
+    }
+</script>
+<script type="text/javascript">
+    let count =10;
+    let yao=3;
+    function CountTime(){
+
+{#        console.log("开奖结果:"+DiceGame.blinkArea("123"));#}
+{#        console.log('倒计时函数',count);#}
+        let date =new Date();
+        let now = date.getTime(); //获得现在的时间
+        //假设现在倒计时5分钟
+        let daojishi =count;
+        let m,s;
+				if(daojishi >= 0) {
+				    if(daojishi<=5){
+				        setTimeout(YaoHuang,500)
+                    }
+					// d = Math.floor(leftTime / 1000 / 60 / 60 / 24);
+					// h = Math.floor(leftTime / 1000 / 60 / 60 % 24);
+					m = parseInt(daojishi  / 60);
+					s = Math.floor(daojishi % 60);
+					// ms = Math.floor(leftTime % 1000);
+					// if(ms < 100) {
+					// 	ms = "0" + ms;
+{#                    console.log("m:",m,"s",s);#}
+					// }
+                    let a=document.getElementById("a").classList;
+                    let b=document.getElementById("b").classList;
+                    let c=document.getElementById("c").classList;
+                    let d=document.getElementById("d").classList;
+                    let tem="diceIssueCountDown";
+                    if(s===0){
+                        d.remove(tem+1);
+                        c.add(tem+0);
+                        d.add(tem+0);
+                    }
+                    if(s%10===9){
+{#                        console.log("s",s);#}
+                        d.remove(tem+0);
+                        d.add(tem+9);
+                        c.remove(tem+0);
+                        c.remove(tem+(parseInt(s/10)+1)%6);
+                        c.add(tem+parseInt(s/10));
+                    }
+                    if(s>=10){
+                        d.remove(tem+(s+1)%10);
+                        d.add(tem+s%10);
+                    }
+					if(s < 10) {
+                        c.remove(tem+1);
+                        c.add(tem+0);
+                        d.remove(tem+(s+1));
+                        d.add(tem+s);
+					}
+					if(m%10===9){
+                        c.remove(tem+(m+1)/10);
+                        c.add(tem+((m+1)/10-1));
+                        d.remove(tem+0);
+                        d.add(tem+9)
+                    }
+                    if(m>=10){
+                        a.remove(tem+0);
+                        b.remove(tem+0);
+                        a.add(tem+parseInt(m/10));
+                        b.add(tem+m%10)
+                    }
+                    else {
+                        b.remove(tem+(m+1));
+                        b.add(tem+m);
+                    }
+                    count-=1;
+				} else {
+				    count=60;
+                    crateResult();
+					console.log('从新开始')
+				}
+				setTimeout(CountTime, 1000);
+			}
+    CountTime();
+</script>
+
+
+
+</html>

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="41" height="365" viewBox="0 0 41 365">
+    <defs>
+        <radialGradient id="a" r="63.009%" fx="50%" fy="50%" gradientTransform="matrix(0 1 -1.0128 0 1.006 0)">
+            <stop offset="0%" stop-color="#515151"/>
+            <stop offset="100%"/>
+        </radialGradient>
+        <radialGradient id="b" r="63.009%" fx="50%" fy="50%" gradientTransform="matrix(0 1 -1.0128 0 1.006 0)">
+            <stop offset="0%" stop-color="#DD3535"/>
+            <stop offset="100%" stop-color="#6F0606"/>
+        </radialGradient>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g transform="translate(2 223)">
+            <rect width="41" height="41" fill="#FFF" rx="7"/>
+            <circle cx="9.457" cy="10.457" r="4.457" fill="url(#a)"/>
+            <circle cx="20.457" cy="20.457" r="4.457" fill="url(#a)"/>
+            <circle cx="31.457" cy="31.457" r="4.457" fill="url(#a)"/>
+            <circle cx="31.457" cy="10.457" r="4.457" fill="url(#a)" transform="rotate(90 31.457 10.457)"/>
+            <circle cx="9.457" cy="31.457" r="4.457" fill="url(#a)" transform="rotate(90 9.457 31.457)"/>
+        </g>
+        <g>
+            <rect width="41" height="41" fill="#FFF" rx="7"/>
+            <circle cx="20.5" cy="20.5" r="4.457" fill="url(#b)"/>
+        </g>
+        <g transform="translate(0 164)">
+            <rect width="41" height="41" fill="#FFF" rx="7"/>
+            <circle cx="11.587" cy="11.587" r="4.457" fill="url(#b)"/>
+            <circle cx="29.413" cy="11.587" r="4.457" fill="url(#b)"/>
+            <circle cx="11.587" cy="29.413" r="4.457" fill="url(#b)"/>
+            <circle cx="29.413" cy="29.413" r="4.457" fill="url(#b)"/>
+        </g>
+        <g transform="translate(0 103)">
+            <rect width="41" height="41" fill="#FFF" rx="7"/>
+            <circle cx="9.804" cy="9.804" r="4.457" fill="url(#a)"/>
+            <circle cx="20.5" cy="20.5" r="4.457" fill="url(#a)"/>
+            <circle cx="31.196" cy="31.196" r="4.457" fill="url(#a)"/>
+        </g>
+        <g transform="translate(4 283)">
+            <rect width="41" height="41" fill="#FFF" rx="7"/>
+            <circle cx="9.457" cy="9.457" r="4.457" fill="url(#a)" transform="rotate(90 9.457 9.457)"/>
+            <circle cx="9.457" cy="20.457" r="4.457" fill="url(#a)" transform="rotate(90 9.457 20.457)"/>
+            <circle cx="9.457" cy="31.457" r="4.457" fill="url(#a)" transform="rotate(90 9.457 31.457)"/>
+            <circle cx="31.457" cy="9.457" r="4.457" fill="url(#a)" transform="rotate(90 31.457 9.457)"/>
+            <circle cx="31.457" cy="20.457" r="4.457" fill="url(#a)" transform="rotate(90 31.457 20.457)"/>
+            <circle cx="31.457" cy="31.457" r="4.457" fill="url(#a)" transform="rotate(90 31.457 31.457)"/>
+        </g>
+        <g transform="translate(0 51)">
+            <rect width="41" height="41" fill="#FFF" rx="7"/>
+            <circle cx="11.587" cy="11.587" r="4.457" fill="url(#a)"/>
+            <circle cx="29.413" cy="29.413" r="4.457" fill="url(#a)"/>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,198 @@
+.dice_rect {
+    background-color: #fefefe;
+    border-radius: 5px;
+    position: relative;
+    width: 40px;
+    height: 40px;
+}
+
+.dice_rect_small {
+    background-color: #fefefe;
+    border-radius: 5px;
+    position: relative;
+    width: 25px;
+    height: 25px;
+}
+
+.dice_rect_small2 {
+    background-color: #fefefe;
+    border-radius: 5px;
+    position: relative;
+    width: 30px;
+    height: 30px;
+}
+
+.dice_rect_big {
+    background-color: #fefefe;
+    border-radius: 5px;
+    position: relative;
+    width: 45px;
+    height: 45px;
+}
+
+.dot {
+    position: absolute;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+}
+
+.dot_small {
+    position: absolute;
+    border-radius: 50%;
+    width: 5px;
+    height: 5px;
+}
+
+.dot_small2 {
+    position: absolute;
+    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+}
+
+.dot_big {
+    position: absolute;
+    border-radius: 50%;
+    width: 11px;
+    height: 11px;
+}
+
+.dice_one {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: #d00b17;
+}
+
+.dice_two1 {
+    background-color: #222122;
+    left: 8%;
+    top: 8%;
+}
+
+.dice_two2 {
+    background-color: #222122;
+    right: 8%;
+    bottom: 8%;
+}
+
+.dice_three1 {
+    background-color: #222122;
+    left: 8%;
+    top: 8%;
+}
+
+.dice_three2 {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: #222122;
+}
+
+.dice_three3 {
+    background-color: #222122;
+    right: 8%;
+    bottom: 8%;
+}
+
+.dice_four1 {
+    background-color: #d00b17;
+    left: 8.5%;
+    top: 8.5%;
+}
+
+.dice_four2 {
+    background-color: #d00b17;
+    right: 8.5%;
+    bottom: 8.5%;
+}
+
+.dice_four3 {
+    background-color: #d00b17;
+    left: 8.5%;
+    bottom: 8.5%;
+}
+
+.dice_four4 {
+    background-color: #d00b17;
+    right: 8.5%;
+    top: 8.5%;
+}
+
+.dice_five1 {
+    background-color: #222122;
+    left: 8%;
+    top: 8%;
+}
+
+.dice_five2 {
+    background-color: #222122;
+    right: 8%;
+    bottom: 8%;
+}
+
+.dice_five3 {
+    background-color: #222122;
+    left: 8%;
+    bottom: 8%;
+}
+
+.dice_five4 {
+    background-color: #222122;
+    right: 8%;
+    top: 8%;
+}
+
+.dice_five5 {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: #222122;
+}
+
+.dice_six1 {
+    background-color: #222122;
+    left: 8%;
+    top: 8%;
+}
+
+.dice_six2 {
+    background-color: #222122;
+    right: 8%;
+    bottom: 8%;
+}
+
+.dice_six3 {
+    background-color: #222122;
+    left: 8%;
+    bottom: 8%;
+}
+
+.dice_six4 {
+    background-color: #222122;
+    right: 8%;
+    top: 8%;
+}
+
+.dice_six5 {
+    top: 0;
+    bottom: 0;
+    left: 8%;
+    margin: auto;
+    background-color: #222122;
+}
+
+.dice_six6 {
+    top: 0;
+    bottom: 0;
+    right: 8%;
+    margin: auto;
+    background-color: #222122;
+}

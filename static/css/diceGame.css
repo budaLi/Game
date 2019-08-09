@@ -1,0 +1,1787 @@
+body .loadBar {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: black;
+    z-index: 1000000;
+}
+
+body .loadBar  .loadBarContent {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+}
+
+#canvas_fly {
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:999;
+    pointer-events: none;
+}
+#canvas_stop {
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:1000;
+    pointer-events: none;
+}
+#canvas_betted {
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:998;
+    pointer-events: none;
+}
+body {
+    background-image: url('../images/diceGameBg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.diceGameContent {
+    position: relative;
+    /* width: 1920px; */
+    height: 912px;
+    background-repeat: no-repeat;
+    transform-style: preserve-3d;
+    perspective-origin: center;
+    perspective: 200px;
+}
+
+.diceGameBar {
+    width: 1430px;
+    height: 63px;
+    line-height: 63px;
+    filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#4e4e4e', endColorStr='#242424', gradientType='0');
+    background: -webkit-linear-gradient(top, #4e4e4e, #242424);
+    background: -moz-linear-gradient(top, bottom, #4e4e4e, #242424);
+    padding: 0 16%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.outerWrap {
+    width: 1430px;
+    height: 630px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+    background-image: url(../images/desktop.png);
+    background-repeat: no-repeat;
+}
+
+.wrap {
+    width: 1136px;
+    height: 476px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.diceGameContent,
+.diceGameContent div {
+    box-sizing: border-box;
+}
+
+.explain {
+    top: 1%;
+    left: 5%;
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #072810;
+    font-size: 14px;
+    color: #fefefe;
+    cursor: pointer;
+    text-align: center;
+}
+
+.peilv {
+    color: #e1c022;
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+    font-size: 14px;
+}
+
+.rowOne {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1135px;
+    height: 180px;
+}
+
+.dxds_left {
+    position: absolute;
+    width: 200px;
+    height: 180px;
+    left: 0;
+    top: 0;
+}
+
+.dxds_da {
+    position: absolute;
+    top: 0;
+    width: 200px;
+    background: #116641;
+    height: 115px;
+    border: 1.5px solid #bbd484;
+    border-radius: 20px 5px 5px 5px;
+}
+
+.dxds_da:hover,
+.dxds_dan:hover,
+.dxds_shuang:hover,
+.dxds_xiao:hover,
+.th2_left_item:hover,
+.th2_right_item:hover,
+.th3_dx_item:hover,
+.th3_tx:hover,
+.hz_item:hover,
+.bth2_item:hover,
+.cygh_item:hover,
+.lh3_item:hover {
+    background-color: #578956;
+}
+
+@-webkit-keyframes bgBlink {
+    100% {
+        background: #578956;
+    }
+}
+
+@-moz-keyframes bgBlink {
+    100% {
+        background: #578956;
+    }
+}
+
+@keyframes bgBlink {
+    100% {
+        background: #578956;
+    }
+}
+
+.diceBgBlink {
+    animation-duration: 1s;
+    animation-name: bgBlink;
+    animation-iteration-count: infinite;
+}
+
+.dxds_dan {
+    position: absolute;
+    bottom: 0;
+    width: 200px;
+    background: #116641;
+    height: 52px;
+    border-radius: 5px;
+    border: 1.5px solid #bbd484;
+}
+
+.th2_left {
+    left: 210px;
+    top: 0;
+    position: absolute;
+    height: 180px;
+    background: #145a3b;
+    width: 130px;
+    border-radius: 5px;
+    border: 1.5px solid #bbd484;
+    padding: 0 5px 0px 5px;
+}
+
+.th2_left_top {
+    width: 100%;
+    height: 20px;
+}
+
+.th2_left_item {
+    width: 100%;
+    background: #145a3b;
+    height: 48px;
+    border: 1.5px solid #bbd484;
+    border-radius: 5px;
+    margin-bottom: 2px;
+    padding: 2px 13px 2px 13px;
+}
+
+.th3 {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    height: 180px;
+    width: 430px;
+}
+
+.th2_right {
+    right: 210px;
+    top: 0;
+    position: absolute;
+    height: 180px;
+    background: #135335;
+    width: 130px;
+    border-radius: 5px;
+    border: 1.5px solid #bbd484;
+    padding: 0 5px 0px 5px;
+}
+
+.dxds_right {
+    position: absolute;
+    width: 200px;
+    height: 180px;
+    right: 0;
+    top: 0;
+}
+
+.dxds_shuang {
+    position: absolute;
+    bottom: 0;
+    width: 200px;
+    background: #116641;
+    height: 52px;
+    border-radius: 5px;
+    border: 1.5px solid #bbd484;
+}
+
+.dxds_xiao {
+    position: absolute;
+    top: 0;
+    width: 200px;
+    background: #116641;
+    height: 115px;
+    border: 1.5px solid #bbd484;
+    border-radius: 5px 20px 5px 5px;
+}
+
+.th2_right_top {
+    width: 100%;
+    height: 20px;
+}
+
+.th2_right_item {
+    width: 100%;
+    background: #15603f;
+    height: 48px;
+    border: 1.5px solid #bbd484;
+    border-radius: 5px;
+    margin-bottom: 2px;
+    padding: 2px 13px 2px 13px;
+}
+
+.th3_dx_top {
+    height: 20px;
+    font-size: 16px;
+}
+
+.th3_dx {
+    height: 47.5%;
+    background: #176542;
+    width: 100%;
+    border: 1.5px solid #bbd484;
+    text-align: center;
+    font-size: 0;
+    border-radius: 5px;
+    padding: 0 5px 5px 5px;
+}
+
+.th3_tx {
+    height: 47.5%;
+    background: #1c8a59;
+    width: 100%;
+    border: 1.5px solid #bbd484;
+    border-radius: 5px;
+    margin-top: 8px;
+    padding: 0 5px 5px 5px;
+    position: absolute;
+    font-size: 0;
+}
+
+.th3_tx_top {
+    height: 20px;
+    font-size: 14px;
+}
+
+.th3_dx_item {
+    width: 61px;
+    border: 1.5px solid #bbd484;
+    border-radius: 5px;
+    background: #186a46;
+    height: 61px;
+    display: inline-block;
+    margin: 0 4px;
+    text-align: center;
+}
+
+.th3_tx_item {
+    width: 61px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    height: 61px;
+    display: inline-block;
+    margin: 0 4px;
+    text-align: center;
+}
+
+.rowTwo.hz {
+    position: absolute;
+    left: 0px;
+    top: 185px;
+    width: 1136px;
+    height: 72px;
+    font-size: 0;
+    text-align: center;
+}
+
+.hz_item {
+    width: 72px;
+    background: #136a44;
+    height: 72px;
+    display: inline-block;
+    margin-right: 9.8px;
+    border: 1.5px solid #bbd484;
+    border-radius: 5px;
+    position: relative;
+    text-align: center;
+}
+
+.hz_item:last-child {
+    margin-right: 0!important;
+}
+
+.hz_item>.num {
+    height: 70%;
+    font-size: 30px;
+    line-height: 58px;
+    color: #fefefe;
+    font-weight: 500;
+}
+
+.hz_item>.peilv {
+    height: 30%;
+    font-size: 14px;
+}
+
+.rowThree.bth2 {
+    position: absolute;
+    left: 0px;
+    top: 262px;
+    width: 1136px;
+    height: 112px;
+    font-size: 0;
+    text-align: center;
+    border: 1.5px solid #bbd484;
+    border-radius: 5px;
+    padding: 6px 80px;
+    background-color: #125638;
+}
+
+.rowThree.bth2>.bth2_peilv {
+    position: absolute;
+    top: 6%;
+    left: 1%;
+    width: 75px;
+    font-size: 14px;
+}
+
+.bth2_item {
+    width: 55px;
+    background: #125638;
+    height: 100px;
+    display: inline-block;
+    margin-right: 10px;
+    border: 1.5px solid #bbd484;
+    border-radius: 5px;
+    padding: 6px 5px;
+}
+
+.bth2_item:last-child {
+    margin-right: 0;
+}
+
+.rowFour {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 1136px;
+    height: 92px;
+    font-size: 0;
+    text-align: center;
+}
+
+.cygh {
+    width: 49%;
+    height: 92px;
+    position: absolute;
+    left: 0;
+    text-align: center;
+    font-size: 0;
+    border: 1.5px solid #bbd484;
+    border-radius: 5px 5px 5px 20px;
+    padding: 15px 0px 15px 80px;
+    background: linear-gradient(right, #155838, #0e3b27);
+    filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#0e3b27', endColorStr='#155838', gradientType='1');
+}
+
+.cygh>.cygh_peilv {
+    position: absolute;
+    top: 20px;
+    left: 15px;
+    font-size: 14px;
+    width: 80px;
+}
+
+.cygh_item {
+    background: #125438;
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    margin-right: 15px;
+    border: 1.5px solid #bbd484;
+    border-radius: 5px;
+    padding: 6px;
+}
+
+.cygh_item:last-child {
+    margin-right: 0;
+}
+
+.lh3 {
+    width: 49%;
+    height: 92px;
+    position: absolute;
+    top: 0;
+    text-align: center;
+    right: 0;
+    font-size: 0;
+    border: 1.5px solid #bbd484;
+    border-radius: 5px 5px 20px 5px;
+    padding: 8px 80px 8px 80px;
+    background: linear-gradient(left, #155838, #0e3b27);
+    filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#155838', endColorStr='#0e3b27', gradientType='1');
+}
+
+.lh3>.lh3_peilv {
+    position: absolute;
+    top: 20px;
+    left: 15px;
+    width: 80px;
+    font-size: 14px;
+}
+
+.lh3_item {
+    width: 76px;
+    background: #166241;
+    height: 76px;
+    display: inline-block;
+    margin-right: 20px;
+    border: 1.5px solid #bbd484;
+    border-radius: 5px;
+}
+
+.lh3_item:last-child {
+    margin-right: 0;
+}
+
+.diceGameInfo {
+    height: 63px;
+    line-height: 63px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.diceGameInfo .userName {
+    display: inline-block;
+    position: relative;
+}
+
+.diceGameInfo .userName .name {
+    font-size: 18px;
+    left: 2px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    padding: 0px 20px 0 50px;
+    height: 32px;
+    line-height: 32px;
+    text-align: right;
+    border: 1px solid #493f3f;
+    background-color: #0e0e0e;
+    color: #df8818;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.diceGameInfo .userName .nameLogo {
+    height: 42px;
+    width: 42px;
+    vertical-align: middle;
+    background-image: url('../images/nameLogo.svg');
+    background-repeat: no-repeat;
+    background-size: 42px;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.balance {
+    position: relative;
+    display: inline-block;
+}
+
+.balanceLogo {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+    left: 6px;
+    display: inline-block;
+    height: 22px;
+    width: 22px;
+    background: url('../images/balance.svg');
+    background-size: 22px;
+    z-index: 1;
+}
+
+.balanceDetail {
+    bottom: 0;
+    top: 0;
+    left: 0;
+    margin: auto;
+    height: 30px;
+    line-height: 30px;
+    font-size: 0;
+    text-align: center;
+    padding: 0px 20px 0 40px;
+    border: 1px solid #493f3f;
+    background-color: #0e0e0e;
+    color: #df8818;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.balanceDetail .balanceLabel,
+.betMoneyDetail .betMoneyLabel {
+    font-size: 18px;
+}
+
+.betMoney {
+    position: relative;
+    display: inline-block;
+}
+
+.betMoneyLogo {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+    left: 4px;
+    display: inline-block;
+    height: 30px;
+    width: 28px;
+    background: url('../images/betMoney.png');
+    background-repeat: no-repeat;
+    background-size: 30px 28px;
+    z-index: 1;
+}
+
+.betMoneyDetail {
+    bottom: 0;
+    top: 0;
+    margin: auto;
+    font-size: 0;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    padding: 0px 20px 0 40px;
+    border: 1px solid #493f3f;
+    background-color: #0e0e0e;
+    color: #df8818;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.balanceDetail .balanceAmount,
+.betMoney .betMoneyAmount {
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.dxds_da>.bigNumber {
+    position: absolute;
+    right: 5%;
+    top: 5%;
+    color: #fefefe;
+    font-size: 14px;
+}
+
+.dxds_da>.explain {
+    top: 10%;
+}
+
+.dxds_da>.peilv {
+    position: absolute;
+    left: 25%;
+    text-align: left;
+    top: 50%;
+}
+
+.dxds_da>.bigChinese {
+    right: 5%;
+    position: absolute;
+    bottom: 0;
+    font-size: 70px;
+    color: #fefefe;
+    height: 95px;
+    font-weight: 500;
+}
+
+.dxds_xiao>.smallNumber {
+    position: absolute;
+    left: 5%;
+    top: 5%;
+    color: #fefefe;
+    font-size: 14px;
+}
+
+.dxds_xiao>.explain {
+    top: 10%;
+    right: 5%;
+    left: inherit;
+}
+
+.dxds_xiao>.peilv {
+    position: absolute;
+    right: 25%;
+    text-align: right;
+    top: 50%;
+}
+
+.dxds_xiao>.smallChinese {
+    left: 5%;
+    position: absolute;
+    bottom: 0;
+    font-size: 70px;
+    color: #fefefe;
+    height: 95px;
+    font-weight: 500;
+}
+
+.dxds_dan>.peilv {
+    position: absolute;
+    left: 25%;
+    text-align: left;
+    line-height: 52px;
+}
+
+.dxds_dan>.explain {
+    margin-top: 17px;
+    position: absolute;
+    right: 5%;
+}
+
+.danChinese {
+    position: absolute;
+    right: 15%;
+    color: #fefefe;
+    font-size: 36px;
+    line-height: 48px;
+}
+
+.dxds_shuang>.peilv {
+    position: absolute;
+    right: 25%;
+    text-align: right;
+    line-height: 52px;
+}
+
+.dxds_shuang>.explain {
+    margin-top: 17px;
+    position: absolute;
+    right: 5%;
+    left: inherit;
+}
+
+.shuangChinese {
+    position: absolute;
+    left: 15%;
+    color: #fefefe;
+    font-size: 36px;
+    line-height: 48px;
+}
+
+.th2_left_item>.dice_rect:nth-child(1) {
+    width: 40px;
+    height: 40px;
+    float: left;
+}
+
+.th2_left_item>.dice_rect:nth-child(2) {
+    width: 40px;
+    height: 40px;
+    float: right;
+}
+
+.th2_right_item>.dice_rect:nth-child(1) {
+    width: 40px;
+    height: 40px;
+    float: left;
+}
+
+.th2_right_item>.dice_rect:nth-child(2) {
+    width: 40px;
+    height: 40px;
+    float: right;
+}
+
+.smallDiceWrap {
+    display: inline-block;
+    padding: 2px;
+}
+
+.th3_dx_item>.smallDiceWrap:first-child,
+.th3_tx_item>.smallDiceWrap:first-child {
+    margin: 0 5px;
+}
+
+.bth2_item>.dice_rect {
+    margin: auto;
+}
+
+.bth2_item>.dice_rect:nth-child(2) {
+    margin-top: 6px;
+}
+
+.cygh_item>.dice_rect_big {
+    margin: auto;
+}
+
+.lh3_item>.small2DiceWrap {
+    display: inline-block;
+    padding: 3px;
+}
+
+.lh3_item>.small2DiceWrap:first-child {
+    margin: 0 10px;
+}
+
+.diceGameBar .betBar {
+    height: 63px;
+    line-height: 63px;
+    position: relative;
+    display: inline-block;
+}
+
+.betBar>.button {
+    position: absolute;
+    text-align: center;
+    font-weight: 500;
+}
+
+.betBar>.button.cancelButton {
+    margin: auto;
+    left: 150px;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    color: firebrick;
+    width: 100px;
+    height: 38px;
+    line-height: 38px;
+    font-size: 18px;
+    border-radius: 6px;
+    background-image: linear-gradient(to top, #f2f2f2, #ffffff);
+    box-shadow: 0 0.8px 0.3px 0 rgba(255, 255, 255, 0.5), inset 0 1px 1px 0 rgba(255, 255, 255, 0.28);
+    border: solid 1px #e0e0e0;
+    cursor: pointer;
+}
+
+.betBar>.button.pieceButtoon {
+    margin: auto;
+    left: 395px;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    color: #fcfcfc;
+    width: 100px;
+    height: 38px;
+    line-height: 38px;
+    font-size: 18px;
+    border-radius: 6px;
+    background-image: linear-gradient(to bottom, #ffbe60, #ff9500 53%, #fb8c00);
+    box-shadow: 0 0.8px 0.3px 0 rgba(255, 255, 255, 0.5), inset 0 1px 1px 1px rgba(255, 255, 255, 0.26);
+    border: solid 1px #ef6c00;
+    cursor: pointer;
+}
+
+.betBar>.button.betButton {
+    margin: auto;
+    left: 273px;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    color: #fcfcfc;
+    width: 100px;
+    height: 38px;
+    line-height: 38px;
+    border-radius: 6px;
+    background-image: linear-gradient(to bottom, #e2423b, #c63030 53%, #ac1b1b);
+    box-shadow: 0 0.8px 0.3px 0 rgba(255, 255, 255, 0.5), inset 0 1px 1px 1px rgba(255, 255, 255, 0.4);
+    border: solid 1px #972626;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.betBar>.button.cancelButton:hover {
+    background-image: linear-gradient(to top, #f2f2f2, #ffffff);
+    box-shadow: 0 0.8px 0.3px 0 rgba(255, 255, 255, 0.5), inset 0 1px 1px 0 rgba(255, 255, 255, 0.28);
+    border: solid 1px #e0e0e0;
+    transition: all 0.2s ease-in-out;
+}
+
+.betBar>.button.cancelButton:active {
+    background-image: linear-gradient(to top, #f2f2f2, #ffffff);
+    box-shadow: 0 0.8px 0.3px 0 rgba(255, 255, 255, 0.5), inset 0 1px 1px 0 rgba(255, 255, 255, 0.28);
+    border: solid 1px #e0e0e0;
+}
+
+.betBar>.button.pieceButtoon:hover {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), linear-gradient(to bottom, #ffbe60, #ff9500 53%, #fb8c00);
+    box-shadow: 0 0.8px 0.3px 0 rgba(255, 255, 255, 0.5), inset 0 1px 1px 0 rgba(255, 255, 255, 0.28);
+    border: solid 1px #f5862c;
+    transition: all 0.2s ease-in-out;
+}
+
+.betBar>.button.pieceButtoon:active {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.05)), linear-gradient(to bottom, #ffbe60, #ff9500 53%, #fb8c00);
+    box-shadow: 0 0.8px 0.3px 0 rgba(255, 255, 255, 0.5), inset 0 1px 1px 1px rgba(255, 255, 255, 0.26);
+    border: solid 1px #ef6c00;
+}
+
+.betBar>.button.betButton:hover {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), linear-gradient(to bottom, #e2423b, #c63030 53%, #ac1b1b);
+    box-shadow: 0 0.8px 0.3px 0 rgba(255, 255, 255, 0.5), inset 0 1px 1px 1px rgba(255, 255, 255, 0.4);
+    border: solid 1px #972626;
+    transition: all 0.2s ease-in-out;
+}
+
+.betBar>.button.betButton:active {
+    background-image: linear-gradient(rgba(50, 50, 50, 0.15), rgba(50, 50, 50, 0.15)), linear-gradient(to bottom, #e2423b, #c63030 53%, #ac1b1b);
+    box-shadow: 0 0.8px 0.3px 0 rgba(255, 255, 255, 0.5), inset 0 1px 1px 1px rgba(255, 255, 255, 0.4);
+    border: solid 1px #972626;
+}
+
+
+/* 飞出去的筹码 */
+
+.flyChip1 {
+    width: 46px;
+    height: 42px;
+    line-height: 42px;
+    font-size: 16px;
+    text-align: center;
+    background-image: url('../images/chips.png');
+    background-size: 462px;
+    background-repeat: no-repeat;
+    background-position: 0 0px;
+    pointer-events: none
+}
+
+.flyChip5 {
+    width: 46px;
+    height: 42px;
+    line-height: 42px;
+    font-size: 16px;
+    text-align: center;
+    background-image: url('../images/chips.png');
+    background-size: 462px;
+    background-repeat: no-repeat;
+    background-position: -60px 0px;
+    pointer-events: none
+}
+
+.flyChip10 {
+    width: 46px;
+    height: 42px;
+    line-height: 42px;
+    font-size: 16px;
+    text-align: center;
+    background-image: url('../images/chips.png');
+    background-size: 462px;
+    background-repeat: no-repeat;
+    background-position: -118px 0px;
+    pointer-events: none
+}
+
+.flyChip20 {
+    width: 46px;
+    height: 42px;
+    line-height: 42px;
+    font-size: 16px;
+    text-align: center;
+    background-image: url('../images/chips.png');
+    background-size: 462px;
+    background-repeat: no-repeat;
+    background-position: -179px 0px;
+    pointer-events: none
+}
+
+.flyChip50 {
+    width: 46px;
+    height: 42px;
+    line-height: 42px;
+    font-size: 16px;
+    text-align: center;
+    background-image: url('../images/chips.png');
+    background-size: 462px;
+    background-repeat: no-repeat;
+    background-position: -238px 0px;
+    pointer-events: none;
+}
+
+.flyChip100 {
+    width: 46px;
+    height: 42px;
+    line-height: 42px;
+    font-size: 16px;
+    text-align: center;
+    background-image: url('../images/chips.png');
+    background-size: 462px;
+    background-repeat: no-repeat;
+    background-position: -297px 0px;
+    pointer-events: none;
+}
+
+.flyChip1000 {
+    width: 46px;
+    height: 42px;
+    line-height: 42px;
+    font-size: 16px;
+    text-align: center;
+    background-image: url('../images/chips.png');
+    background-size: 462px;
+    background-repeat: no-repeat;
+    background-position: -356px 0px;
+    pointer-events: none;
+}
+
+.flyChip5000 {
+    width: 46px;
+    height: 42px;
+    line-height: 42px;
+    font-size: 16px;
+    text-align: center;
+    background-image: url('../images/chips.png');
+    background-size: 462px;
+    background-repeat: no-repeat;
+    background-position: -416px 0px;
+    pointer-events: none;
+}
+
+
+/* 飞出的盘结束 */
+
+
+/* 投注盘子 开始*/
+
+.chips {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    font-size: 0;
+    text-align: right;
+    width: 425px;
+    height: 42px;
+    padding: 0 25px;
+}
+
+.chips .chip {
+    display: inline-block;
+    width: 46px;
+    height: 42px;
+    line-height: 42px;
+    font-size: 16px;
+    text-align: center;
+    background-image: url('../images/chips.png');
+    background-size: 462px;
+    background-repeat: no-repeat;
+    top: -10px;
+    position: relative;
+}
+
+.chips .chip.chip1 {
+    background-position: 0 -52px;
+}
+
+.chips .chip.chip1.on,
+.chips .chip.chip1:hover {
+    background-position: 0 0px;
+    top: -21px;
+}
+
+.chips .chip.chip5 {
+    background-position: -60px -52px;
+}
+
+.chips .chip.chip5.on,
+.chips .chip.chip5:hover {
+    top: -21px;
+    background-position: -60px 0px;
+}
+
+.chips .chip.chip10 {
+    background-position: -120px -52px;
+}
+
+.chips .chip.chip10.on,
+.chips .chip.chip10:hover {
+    top: -21px;
+    background-position: -118px 0px;
+}
+
+.chips .chip.chip20 {
+    background-position: -179px -52px;
+}
+
+.chips .chip.chip20.on,
+.chips .chip.chip20:hover {
+    top: -21px;
+    background-position: -179px 0px;
+}
+
+.chips .chip.chip50 {
+    background-position: -238px -52px;
+}
+
+.chips .chip.chip50.on,
+.chips .chip.chip50:hover {
+    top: -21px;
+    background-position: -238px -0px;
+}
+
+.chips .chip.chip100 {
+    background-position: -297px -52px;
+}
+
+.chips .chip.chip100.on,
+.chips .chip.chip100:hover {
+    top: -21px;
+    background-position: -297px 0px;
+}
+
+.chips .chip.chip1000 {
+    background-position: -358px -52px;
+}
+
+.chips .chip.chip1000.on,
+.chips .chip.chip1000:hover {
+    top: -21px;
+    background-position: -356px 0px;
+}
+
+.chips .chip.chip5000 {
+    background-position: -417px -52px;
+}
+
+.chips .chip.chip5000.on,
+.chips .chip.chip5000:hover {
+    top: -21px;
+    background-position: -416px 0px;
+}
+
+
+/* 底盘筹码结束 */
+
+.diceGameContent .diceGameTopArea {
+    width: 1200px;
+    height: 130px;
+    filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr='#525252', endColorStr='#242424', gradientType='0');
+    background: -webkit-linear-gradient(top, #525252, #242424);
+    background: -moz-linear-gradient(top, #525252, #242424);
+    position: absolute;
+    background-repeat: no-repeat;
+    margin: auto;
+    left: 0;
+    top: -136px;
+    right: 0;
+}
+
+.diceGameTopArea .diceLogo {
+    background-image: url('../images/diceLogo.png');
+    background-repeat: no-repeat;
+    position: absolute;
+    height: 120px;
+    line-height: 120px;
+    width: 300px;
+    bottom: 0;
+    left: 20px;
+}
+
+.diceGameTopArea .diceIssue {
+    position: absolute;
+    left: 320px;
+    width: 208px;
+    height: 130px;
+}
+
+.diceIssue .diceIssueTop {
+    position: absolute;
+    top: 5px;
+    height: 24px;
+    line-height: 24px;
+}
+
+.diceIssue .diceIssueCountDown {
+    position: absolute;
+    top: 25px;
+    width: 208px;
+    height: 96px;
+    background-size: 208px 96px;
+    background-image: url(../images/diceCountDown.png);
+    background-position: -5px 0;
+    background-repeat: no-repeat;
+}
+
+.diceGameTopArea .diceResult {
+    position: absolute;
+    left: 560px;
+    width: 196px;
+    height: 130px;
+}
+
+.diceResult .diceResultTop {
+    position: absolute;
+    top: 5px;
+    height: 24px;
+    line-height: 24px;
+}
+
+.diceResult .diceResultDetail {
+    position: absolute;
+    top: 25px;
+    width: 188px;
+    height: 96px;
+    background-size: 196px 96px;
+    background-image: url(../images/diceResultDetail.png);
+    background-position: -5px 0;
+    background-repeat: no-repeat;
+}
+
+.diceResult_1 {
+    background-image: url('../images/dice.svg');
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 32px;
+}
+
+.diceResult_2 {
+    background-image: url('../images/dice.svg');
+    background-repeat: no-repeat;
+    background-position: 0 -40px;
+    background-size: 32px;
+}
+
+.diceResult_3 {
+    background-image: url('../images/dice.svg');
+    background-repeat: no-repeat;
+    background-position: 0 -80px;
+    background-size: 32px;
+}
+
+.diceResult_4 {
+    background-image: url('../images/dice.svg');
+    background-repeat: no-repeat;
+    background-position: 0 -128px;
+    background-size: 32px;
+}
+
+.diceResult_5 {
+    background-image: url('../images/dice.svg');
+    background-repeat: no-repeat;
+    background-position: 0 -174px;
+    background-size: 32px;
+}
+
+.diceResult_6 {
+    background-image: url('../images/dice.svg');
+    background-repeat: no-repeat;
+    background-position: 0 -220px;
+    background-size: 32px;
+}
+
+.diceResult .diceResultDetail .diceResultDetailFirst {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 20%;
+    margin: auto;
+    width: 32px;
+    height: 32px;
+}
+
+.diceResult .diceResultDetail .diceResultDetailSecond {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 32px;
+    height: 32px;
+}
+
+.diceResult .diceResultDetail .diceResultDetailThird {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 20%;
+    margin: auto;
+    width: 32px;
+    height: 32px;
+}
+
+.diceGameTopArea .diceRecent {
+    position: absolute;
+    left: 780px;
+    width: 250px;
+    height: 130px;
+}
+
+.diceRecent .diceRecentTop {
+    position: absolute;
+    top: 5px;
+    height: 24px;
+    line-height: 24px;
+}
+
+.diceRecent .diceRecentDetail {
+    position: absolute;
+    top: 25px;
+    width: 250px;
+    height: 96px;
+    background-size: 250px 96px;
+    background-image: url('../images/diceResultDetail.png');
+    background-position: -5px 0;
+    background-repeat: no-repeat;
+    padding: 8px;
+    z-index: 2;
+}
+
+.diceRecent .diceRecentDetail:hover {
+    background-image: url('../images/diceResultDetail_ten.png');
+    height: 270px;
+    background-size: 250px 270px;
+}
+
+.diceRecent .diceRecentDetail:hover .scrollWrap {
+    height: 240px;
+}
+
+.diceRecent .diceRecentDetail:hover ul {
+    height: 270px;
+}
+
+.diceIssueTop,
+.diceResultTop,
+.diceRecentTop,
+.diceRecentDetail {
+    color: #bed3f1;
+    text-align: left;
+    font-size: 14px;
+}
+
+.diceRecent .diceRecentDetail ul {
+    overflow-y: scroll;
+    height: 74px;
+    position: absolute;
+    width: 250px;
+}
+
+.diceRecent .diceRecentDetail .scrollWrap {
+    overflow: hidden;
+    position: relative;
+    height: 74px;
+    width: 232px;
+}
+
+.diceRecent .diceRecentDetail ul>li {
+    height: 14px;
+    margin: 10px 0;
+    padding: 0 20px;
+}
+
+.diceRecent .diceRecentDetail ul>li .diceRD_left,
+.diceRecent .diceRecentDetail ul>li .diceRD_center,
+.diceRecent .diceRecentDetail ul>li .diceRD_right {
+    float: left;
+    height: 14px;
+    line-height: 14px;
+}
+
+.diceRecent .diceRecentDetail ul>li .diceRD_left {
+    width: 24%;
+}
+
+.diceRecent .diceRecentDetail ul>li .diceRD_center {
+    width: 32%;
+    font-size: 0;
+}
+
+.diceRecent .diceRecentDetail ul>li .diceRD_right {
+    width: 44%;
+    position: relative;
+}
+
+.diceRecent .diceRecentDetail ul>li .diceRD_right>.diceRD_xt_r {
+    position: absolute;
+    left: 5px;
+}
+
+.diceRecent .diceRecentDetail ul>li .diceRD_right>.diceRD_xt_m {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 14px;
+    height: 14px;
+}
+
+.diceRecent .diceRecentDetail ul>li .diceRD_right>.diceRD_xt_l {
+    position: absolute;
+    right: 5px;
+}
+
+.diceRecent .diceRecentDetail ul>li .diceRD_center>.diceRD {
+    background-image: url(../images/dice_small.svg);
+    background-repeat: no-repeat;
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    background-size: 14px;
+    margin-right: 6px;
+}
+
+.diceRecent .diceRecentDetail ul>li .diceRD_center>.diceRD:last-child {
+    margin-right: 0;
+}
+
+.diceRD_1 {
+    background-position: 0 0;
+}
+
+.diceRD_2 {
+    background-position: 0 -16px;
+}
+
+.diceRD_3 {
+    background-position: 0 -33px;
+}
+
+.diceRD_4 {
+    background-position: 0 -49px;
+}
+
+.diceRD_5 {
+    background-position: 0 -66px;
+}
+
+.diceRD_6 {
+    background-position: 0 -84px;
+}
+
+.diceGameTopArea .diceLight {
+    position: absolute;
+    bottom: -34px;
+    background-image: url(../images/diceLight.png);
+    background-repeat: no-repeat;
+    height: 42px;
+    width: 1026px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 2px;
+}
+
+.diceIssueCountDownNum {
+    background-image: url('../images/diceCountDownNum.png');
+    position: absolute;
+    width: 40px;
+    height: 100px;
+}
+
+.diceIssueCountDownNum:nth-child(1) {
+    left: 12px;
+}
+
+.diceIssueCountDownNum:nth-child(2) {
+    left: 52px;
+}
+
+.diceIssueCountDownNum:nth-child(3) {
+    right: 60px;
+}
+
+.diceIssueCountDownNum:nth-child(4) {
+    right: 20px;
+}
+
+.diceIssueCountDown>.diceIssueCountDown1 {
+    background-position: 0 0px;
+}
+
+.diceIssueCountDown>.diceIssueCountDown2 {
+    background-position: 0 -98px;
+}
+
+.diceIssueCountDown>.diceIssueCountDown3 {
+    background-position: 0 -194px;
+}
+
+.diceIssueCountDown>.diceIssueCountDown4 {
+    background-position: 0 -288px;
+}
+
+.diceIssueCountDown>.diceIssueCountDown5 {
+    background-position: 0 -384px;
+}
+
+.diceIssueCountDown>.diceIssueCountDown6 {
+    background-position: 0 -480px;
+}
+
+.diceIssueCountDown>.diceIssueCountDown7 {
+    background-position: 0 -574px;
+}
+
+.diceIssueCountDown>.diceIssueCountDown8 {
+    background-position: 0 -672px;
+}
+
+.diceIssueCountDown>.diceIssueCountDown9 {
+    background-position: 0 -766px;
+}
+
+.diceIssueCountDown>.diceIssueCountDown0 {
+    background-position: 0 -862px;
+}
+
+.diceCup {
+    background-image: url(/static/images/diceCup.png);
+    position: absolute;
+    background-repeat: no-repeat;
+    width: 420px;
+    height: 400px;
+    background-size: 1138px 773px;
+    background-position: -570px -200px;
+    left: 0;
+    right: 0;
+    top: -180px;
+    margin: auto;
+    z-index: 5;
+    transform: scale(0.25);
+}
+
+.diceCup_animate {
+    animation-name: diceCupBig, diceCupShake, diceCupSmall;
+    animation-delay: 0s, 2s, 13s;
+    animation-duration: 2s, 100ms, 2s;
+    animation-fill-mode: forwards, forwards, forwards;
+    animation-timing-function: linear, ease-in-out, linear;
+    animation-iteration-count: 1, 100, 1;
+}
+
+.diceCup_animate .diceInCup_left {
+    animation-name: diceShake_left;
+    animation-delay: 2s;
+    animation-duration: 200ms;
+    animation-fill-mode: forwards;
+    animation-timing-function: step-start;
+    animation-iteration-count: 50;
+}
+
+.diceCup_animate .diceInCup_center {
+    animation-name: diceShake_center;
+    animation-delay: 2s;
+    animation-duration: 200ms;
+    animation-fill-mode: forwards;
+    animation-timing-function: step-start;
+    animation-iteration-count: 50;
+}
+
+.diceCup_animate .diceInCup_right {
+    animation-name: diceShake_right;
+    animation-delay: 2s;
+    animation-duration: 200ms;
+    animation-fill-mode: forwards;
+    animation-timing-function: step-start;
+    animation-iteration-count: 50;
+}
+
+@keyframes diceCupBig {
+    100% {
+        transform: scale(0.65);
+        top: 36px;
+    }
+}
+
+@keyframes diceCupShake {
+  2% {
+    transform: translate(-0.5px, -0.5px) rotate(0.5deg) scale(0.65);
+  }
+  4% {
+    transform: translate(2.5px, -1.5px) rotate(-0.5deg) scale(0.65);
+  }
+  6% {
+    transform: translate(2.5px, 0.5px) rotate(1.5deg) scale(0.65);
+  }
+  8% {
+    transform: translate(-0.5px, 2.5px) rotate(-0.5deg) scale(0.65);
+  }
+  10% {
+    transform: translate(1.5px, -0.5px) rotate(1.5deg) scale(0.65);
+  }
+  12% {
+    transform: translate(0.5px, -1.5px) rotate(-0.5deg) scale(0.65);
+  }
+  14% {
+    transform: translate(0.5px, -1.5px) rotate(0.5deg) scale(0.65);
+  }
+  16% {
+    transform: translate(-0.5px, 0.5px) rotate(0.5deg) scale(0.65);
+  }
+  18% {
+    transform: translate(-1.5px, 1.5px) rotate(0.5deg) scale(0.65);
+  }
+  20% {
+    transform: translate(-0.5px, -1.5px) rotate(-0.5deg) scale(0.65);
+  }
+  22% {
+    transform: translate(1.5px, 1.5px) rotate(0.5deg) scale(0.65);
+  }
+  24% {
+    transform: translate(-1.5px, 2.5px) rotate(1.5deg) scale(0.65);
+  }
+  26% {
+    transform: translate(-0.5px, 0.5px) rotate(0.5deg) scale(0.65);
+  }
+  28% {
+    transform: translate(-1.5px, 1.5px) rotate(-0.5deg) scale(0.65);
+  }
+  30% {
+    transform: translate(1.5px, 0.5px) rotate(0.5deg) scale(0.65);
+  }
+  32% {
+    transform: translate(1.5px, -0.5px) rotate(0.5deg) scale(0.65);
+  }
+  34% {
+    transform: translate(2.5px, 1.5px) rotate(-0.5deg) scale(0.65);
+  }
+  36% {
+    transform: translate(-1.5px, -0.5px) rotate(-0.5deg) scale(0.65);
+  }
+  38% {
+    transform: translate(1.5px, 2.5px) rotate(-0.5deg) scale(0.65);
+  }
+  40% {
+    transform: translate(-0.5px, -1.5px) rotate(0.5deg) scale(0.65);
+  }
+  42% {
+    transform: translate(0.5px, 0.5px) rotate(0.5deg) scale(0.65);
+  }
+  44% {
+    transform: translate(1.5px, 1.5px) rotate(-0.5deg) scale(0.65);
+  }
+  46% {
+    transform: translate(-1.5px, 0.5px) rotate(-0.5deg) scale(0.65);
+  }
+  48% {
+    transform: translate(1.5px, 1.5px) rotate(1.5deg) scale(0.65);
+  }
+  50% {
+    transform: translate(0.5px, -0.5px) rotate(0.5deg) scale(0.65);
+  }
+  52% {
+    transform: translate(-0.5px, 0.5px) rotate(1.5deg) scale(0.65);
+  }
+  54% {
+    transform: translate(1.5px, -1.5px) rotate(0.5deg) scale(0.65);
+  }
+  56% {
+    transform: translate(-0.5px, -1.5px) rotate(1.5deg) scale(0.65);
+  }
+  58% {
+    transform: translate(2.5px, 1.5px) rotate(0.5deg) scale(0.65);
+  }
+  60% {
+    transform: translate(-0.5px, -0.5px) rotate(1.5deg) scale(0.65);
+  }
+  62% {
+    transform: translate(1.5px, 2.5px) rotate(-0.5deg) scale(0.65);
+  }
+  64% {
+    transform: translate(-1.5px, 0.5px) rotate(-0.5deg) scale(0.65);
+  }
+  66% {
+    transform: translate(2.5px, 1.5px) rotate(-0.5deg) scale(0.65);
+  }
+  68% {
+    transform: translate(2.5px, 0.5px) rotate(1.5deg) scale(0.65);
+  }
+  70% {
+    transform: translate(-1.5px, -1.5px) rotate(0.5deg) scale(0.65);
+  }
+  72% {
+    transform: translate(-1.5px, -0.5px) rotate(-0.5deg) scale(0.65);
+  }
+  74% {
+    transform: translate(-0.5px, -1.5px) rotate(1.5deg) scale(0.65);
+  }
+  76% {
+    transform: translate(1.5px, 1.5px) rotate(0.5deg) scale(0.65);
+  }
+  78% {
+    transform: translate(1.5px, -0.5px) rotate(1.5deg) scale(0.65);
+  }
+  80% {
+    transform: translate(-0.5px, 1.5px) rotate(1.5deg) scale(0.65);
+  }
+  82% {
+    transform: translate(2.5px, 2.5px) rotate(0.5deg) scale(0.65);
+  }
+  84% {
+    transform: translate(-0.5px, 0.5px) rotate(1.5deg) scale(0.65);
+  }
+  86% {
+    transform: translate(1.5px, -0.5px) rotate(1.5deg) scale(0.65);
+  }
+  88% {
+    transform: translate(2.5px, -1.5px) rotate(0.5deg) scale(0.65);
+  }
+  90% {
+    transform: translate(0.5px, -1.5px) rotate(-0.5deg) scale(0.65);
+  }
+  92% {
+    transform: translate(-0.5px, -1.5px) rotate(1.5deg) scale(0.65);
+  }
+  94% {
+    transform: translate(2.5px, 0.5px) rotate(1.5deg) scale(0.65);
+  }
+  96% {
+    transform: translate(-0.5px, -1.5px) rotate(-0.5deg) scale(0.65);
+  }
+  98% {
+    transform: translate(-0.5px, -1.5px) rotate(0.5deg) scale(0.65);
+  }
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0) scale(0.65);
+  }
+}
+
+@keyframes diceCupSmall {
+    100% {
+        transform: scale(0.25);
+        top: -180px;
+    }
+}
+
+.diceCup>.diceInCup1 {
+    background-size: 198px 152px;
+    background-image: url(../images/saizi_1.png);
+    background-position: 3px -56px;
+}
+
+.diceCup>.diceInCup2 {
+    background-size: 198px 152px;
+    background-image: url(../images/saizi_2.png);
+    background-position: 3px -56px;
+}
+
+.diceCup>.diceInCup3 {
+    background-size: 198px 152px;
+    background-image: url(../images/saizi_3.png);
+    background-position: 3px -56px;
+}
+
+.diceCup>.diceInCup4 {
+    background-size: 198px 152px;
+    background-image: url(../images/saizi_4.png);
+    background-position: 3px -56px;
+}
+
+.diceCup>.diceInCup5 {
+    background-size: 198px 152px;
+    background-image: url(../images/saizi_5.png);
+    background-position: 3px -56px;
+}
+
+.diceCup>.diceInCup6 {
+    background-size: 198px 152px;
+    background-image: url(../images/saizi_6.png);
+    background-position: 3px -56px;
+}
+
+.diceCup .diceInCup_left {
+    top: 0;
+    bottom: 45px;
+    margin: auto;
+    left: 101px;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+}
+
+.diceCup .diceInCup_center {
+    top: 0;
+    bottom: 45px;
+    margin: auto;
+    right: 0;
+    left: 0;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+}
+
+.diceCup .diceInCup_right {
+    top: 0;
+    bottom: 45px;
+    margin: auto;
+    right: 100px;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+}
+
+[rel="betChip"].bettedChip {
+    border: 2px solid blueviolet;
+}
